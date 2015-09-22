@@ -6,11 +6,11 @@ if [ $? -eq 1 ]; then
 echo net.ipv4.icmp_echo_ignore_broadcasts=0 | sudo tee -a /etc/sysctl.conf
 fi
 
-echo "------------------ enabled responce to broadcast ping  ----------------";
+echo "------------------ enabled response to broadcast ping  ----------------";
 
-sudo hostname inoho
-sudo perl -pi -e 's/raspberrypi/inoho/g' /etc/hostname
-sudo perl -pi -e 's/raspberrypi/inoho/g' /etc/hosts
+sudo hostname XY
+sudo perl -pi -e 's/raspberrypi/XY/g' /etc/hostname
+sudo perl -pi -e 's/raspberrypi/XY/g' /etc/hosts
 
 echo "------------------ hostname changed to inoho ----------------";
 
