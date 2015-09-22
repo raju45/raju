@@ -1,14 +1,14 @@
 #!/bin/bash
-DIR1=/home/admin/inoho/homeController
-DIR2=/home/admin/inoho/gitScripts
-DIR3=/home/admin/inoho/gitScripts/shellScripts/upgradeScripts
-REPO=https://github.com/deepam1982/yantram.git
+DIR1=/home/admin/XY/homeController
+DIR2=/home/admin/XY/gitScripts
+DIR3=/home/admin/XY/gitScripts/shellScripts/upgradeScripts
+REPO=https://github.com/xyio/xy.git
 BRANCH=dev
 
-mkdir /home/admin/inoho
-mkdir /home/admin/inoho/homeController
-mkdir /home/admin/inoho/logs
-mkdir /home/admin/inoho/configs
+mkdir /home/admin/XY
+mkdir /home/admin/XY/homeController
+mkdir /home/admin/XY/logs
+mkdir /home/admin/XY/configs
 
 git clone -b $BRANCH $REPO $DIR1
 cp $DIR1/package.json $DIR1/../package.json
@@ -19,7 +19,7 @@ git --git-dir=$DIR2/.git config core.sparsecheckout true
 echo "shellScripts" >> $DIR2/.git/info/sparse-checkout
 git --work-tree=$DIR2 --git-dir=$DIR2/.git pull origin $BRANCH
 
-echo "------------------ git clone inoho done ----------------";
+echo "------------------ git clone XY done ----------------";
 
 wget http://nodejs.org/dist/v0.10.25/node-v0.10.25-linux-arm-pi.tar.gz
 tar -xvzf node-v0.10.25-linux-arm-pi.tar.gz
@@ -31,31 +31,31 @@ sudo ln -s /opt/node/bin/npm /usr/bin/npm
 
 echo "------------------ nodejs and npm installation done ----------------";
 
-npm install /home/admin/inoho/
-mv -if node_modules/Inoho/node_modules/ inoho/node_modules
+npm install /home/admin/XY/
+mv -if node_modules/XY/node_modules/ XY/node_modules
 rm -r node_modules
 
-echo "------------------ inoho node package installation done ----------------";
+echo "------------------ XY node package installation done ----------------";
 
 
-sudo cp /home/admin/inoho/homeController/shellScripts/inoho.sh /etc/init.d/inoho
-sudo chmod 755 /etc/init.d/inoho
-sudo update-rc.d inoho defaults
+sudo cp /home/admin/XY/homeController/shellScripts/XY.sh /etc/init.d/XY
+sudo chmod 755 /etc/init.d/XY
+sudo update-rc.d XY defaults
 
-echo "------------------ added inoho.sh to startup scripts ----------------";
+echo "------------------ added XY.sh to startup scripts ----------------";
 
-sudo cp /home/admin/inoho/homeController/shellScripts/checkIpAlias.sh /etc/init.d/checkIpAlias.sh
+sudo cp /home/admin/XY/homeController/shellScripts/checkIpAlias.sh /etc/init.d/checkIpAlias.sh
 sudo chmod 755 /etc/init.d/checkIpAlias.sh
 sudo update-rc.d checkIpAlias.sh defaults
 
-sudo chmod 755 /home/admin/inoho/homeController/shellScripts/checkIpAlias.sh
-line="* * * * * sudo /home/admin/inoho/homeController/shellScripts/checkIpAlias.sh > /home/admin/inoho/logs/checkIpAlias.log"
+sudo chmod 755 /home/admin/XY/homeController/shellScripts/checkIpAlias.sh
+line="* * * * * sudo /home/admin/XY/homeController/shellScripts/checkIpAlias.sh > /home/admin/XY/logs/checkIpAlias.log"
 (crontab -u root -l; echo "$line" ) | crontab -u root -
 
 echo "------------------ checkIpAlias added to cron ----------------";
 
-sudo chmod 755 /home/admin/inoho/homeController/shellScripts/wifiCheck.sh
-line="* * * * * sudo /home/admin/inoho/homeController/shellScripts/wificheck.sh > /home/admin/inoho/logs/wificheck.log"
+sudo chmod 755 /home/admin/XY/homeController/shellScripts/wifiCheck.sh
+line="* * * * * sudo /home/admin/XY/homeController/shellScripts/wificheck.sh > /home/admin/XY/logs/wificheck.log"
 (crontab -u root -l; echo "$line" ) | crontab -u root -
 
 echo "------------------ checkWifi added to cron ----------------";
