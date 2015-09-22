@@ -1,10 +1,10 @@
 #!/bin/bash
 
-DIR0=/home/admin/inoho
+DIR0=/home/admin/XY
 DIR1=$DIR0/homeController
 DIR2=$DIR0/gitScripts
 DIR3=$DIR2/shellScripts/upgradeScripts
-REPO=https://github.com/deepam1982/yantram.git
+REPO=https://github.com/xyio/xy.git
 BRANCH=dev
 
 # step 1 compare current revision number with latest revision number at repo
@@ -43,7 +43,7 @@ git --work-tree=$DIR1 --git-dir=$DIR1/.git reset --hard origin/$BRANCH
 
 #step 4 restart homeController
 
-sudo /etc/init.d/inoho stop
-sudo /etc/init.d/inoho start
+sudo /etc/init.d/XY stop
+sudo /etc/init.d/XY start
 
 echo "upgrade complete"
