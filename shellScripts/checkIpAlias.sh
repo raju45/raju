@@ -23,4 +23,4 @@ if [ "$IP" != "" ]; then
         echo "$IP"
         CMD="ifconfig eth0:123 $IP up"
         eval "$CMD"
-fi
+fi 
