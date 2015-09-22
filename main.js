@@ -88,4 +88,4 @@ __userConfig = new UsrCnfMngr({'callback':function (err) {
       console.log( "UNCAUGHT EXCEPTION " );
       console.log( "[Inside 'uncaughtException' event] " + err.stack || err.message );
   });
-}});
+}}); 
